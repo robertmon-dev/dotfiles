@@ -1,0 +1,15 @@
+[user]
+	signingkey = 22205E46D2DD53DED22270589A7F04E107B21E71
+	email = m0ni3v@gmail.com
+	name = Robert Moń
+[commit]
+	gpgsign = true
+[credential]
+	helper = store
+[core]
+	pager = more
+[url "https://"]
+	insteadOf = git://
+[http]
+	lowSpeedLimit = 0
+	lowSpeedTime = 999999
