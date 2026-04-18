@@ -1,0 +1,59 @@
+@import "palette.css";
+
+* {
+    font-family: "JetBrains Mono", "Symbols Nerd Font";
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.85);
+    border-bottom: 2px solid @border-col;
+    color: @text-main;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces, #clock, #battery, #pulseaudio, #network, #cpu, #memory {
+    background: @tn-bg-storm;
+    padding: 0 12px;
+    margin: 4px 3px;
+    border-radius: 12px;
+    border: 1px solid @border-col;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: @tn-slate;
+}
+
+#workspaces button.active {
+    color: @tn-blue;
+    border-bottom: 2px solid @tn-blue;
+}
+
+#workspaces button.urgent {
+    color: @tn-red;
+}
+
+#clock {
+    color: @tn-cyan;
+    font-weight: bold;
+}
+
+#battery.charging {
+    color: @tn-green;
+}
+
+#battery.warning:not(.charging) {
+    color: @tn-orange;
+}
+
+#pulseaudio {
+    color: @tn-purple;
+}
+
+#network {
+    color: @tn-blue;
+}
