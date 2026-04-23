@@ -1,0 +1,102 @@
+@import "palette.css";
+
+* {
+    font-family: "JetBrains Mono", "Symbols Nerd Font";
+    font-size: 13px;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: alpha(#1a1b26, 0.07);
+    border-bottom: 2px solid alpha(#414868, 0.15);
+    color: @text-main;
+}
+
+#workspaces,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#cpu,
+#memory {
+    background: alpha(#1e2030, 0.55);
+    padding: 0 12px;
+    margin: 4px 3px;
+    border-radius: 12px;
+    border: 1px solid alpha(#414868, 0.35);
+    box-shadow:
+        0 4px 16px alpha(#000000, 0.25),
+        inset 0 1px 0 alpha(#ffffff, 0.03);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#clock {
+    color: @tn-cyan;
+    font-weight: 900;
+    font-size: 14px;
+    padding: 0 16px;
+    letter-spacing: -0.01em;
+}
+
+#battery            { color: @tn-green; }
+#battery.charging   { color: @tn-green; }
+
+#battery.warning:not(.charging) {
+    color: @tn-orange;
+    border-color: alpha(#ff9e64, 0.25);
+    background: alpha(#ff9e64, 0.07);
+}
+
+#battery.critical:not(.charging) {
+    color: @tn-red;
+    border-color: alpha(#f7768e, 0.45);
+    background: alpha(#f7768e, 0.12);
+    box-shadow: 0 0 14px alpha(#f7768e, 0.25), 0 4px 16px alpha(#000000, 0.3);
+}
+
+#network    { color: @tn-blue; }
+#cpu        { color: @tn-yellow; }
+#memory     { color: @tn-teal; }
+#pulseaudio { color: @tn-purple; }
+
+#workspaces button {
+    padding: 0 8px;
+    color: @tn-slate;
+    border-radius: 8px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background-color: transparent;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+#workspaces button.active {
+    color: @tn-blue;
+    font-weight: 800;
+    background-color: alpha(#414868, 0.55);
+    border-bottom: 2px solid @tn-blue;
+    box-shadow: 0 0 12px alpha(#7aa2f7, 0.2);
+}
+
+#workspaces button:hover:not(.active) {
+    color: @tn-blue;
+    background-color: alpha(#414868, 0.3);
+    border-bottom: 2px solid alpha(#7aa2f7, 0.3);
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    text-shadow: inherit;
+    border: none;
+}
+
+#workspaces button.urgent {
+    color: @tn-red;
+    border-bottom: 2px solid alpha(#f7768e, 0.6);
+    background-color: alpha(#f7768e, 0.07);
+}
+
