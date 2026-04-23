@@ -8,7 +8,6 @@
 
 window#waybar {
     background: alpha(#1a1b26, 0.07);
-    border-bottom: 2px solid alpha(#414868, 0.15);
     color: @text-main;
 }
 
@@ -20,15 +19,17 @@ window#waybar {
 #cpu,
 #memory {
     background: alpha(#1e2030, 0.55);
-    padding: 0 12px;
-    margin: 4px 3px;
+    padding: 8px 12px;
+    margin: 6px 3px;
     border-radius: 12px;
-    border: 1px solid alpha(#414868, 0.35);
     box-shadow:
         0 4px 16px alpha(#000000, 0.25),
         inset 0 1px 0 alpha(#ffffff, 0.03);
     font-weight: 700;
     font-size: 14px;
+}
+#workspaces {
+  padding: 0 20px;
 }
 
 #clock {
@@ -61,21 +62,22 @@ window#waybar {
 #pulseaudio { color: @tn-purple; }
 
 #workspaces button {
-    padding: 0 8px;
-    color: @tn-slate;
-    border-radius: 8px;
-    border: none;
-    border-bottom: 2px solid transparent;
-    background-color: transparent;
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        border-color 0.2s ease;
+  font-weight: 900;
+  padding: 0 8px;
+  color: @tn-slate;
+  border-radius: 8px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 #workspaces button.active {
     color: @tn-blue;
-    font-weight: 800;
+    font-weight: 900;
     background-color: alpha(#414868, 0.55);
     border-bottom: 2px solid @tn-blue;
     box-shadow: 0 0 12px alpha(#7aa2f7, 0.2);
@@ -99,4 +101,3 @@ window#waybar {
     border-bottom: 2px solid alpha(#f7768e, 0.6);
     background-color: alpha(#f7768e, 0.07);
 }
-
