@@ -1,0 +1,96 @@
+* {
+    bg:         rgba(30, 32, 48, 0.92);
+    bg-alt:     rgba(36, 40, 59, 0.85);
+    fg:         #c0caf5;
+    fg-muted:   #565f89;
+    blue:       #7aa2f7;
+    purple:     #bb9af7;
+    border-col: #7aa2f7;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    background-color: @bg;
+    border: 4px;
+    border-color: @border-col;
+    border-radius: 22px;
+    width: 520px;
+    padding: 16px;
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview];
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 12px;
+    padding: 10px 16px;
+    spacing: 8px;
+    children: [prompt, entry];
+}
+
+prompt {
+    background-color: transparent;
+    text-color: @blue;
+    font: "JetBrains Mono Bold 13";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @fg;
+    placeholder: "search... ";
+    placeholder-color: @fg-muted;
+}
+
+listview {
+    background-color: transparent;
+    lines: 8;
+    columns: 1;
+    spacing: 4px;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 8px 12px;
+    spacing: 12px;
+    children: [element-icon, element-text];
+    orientation: horizontal;
+}
+
+element-icon {
+    background-color: transparent;
+    size: 24px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: @fg;
+    vertical-align: 0.5;
+}
+
+element selected {
+    background-color: @blue;
+    border-radius: 10px;
+}
+
+element selected .element-text {
+    text-color: #1e2030;
+}
+
+element alternate {
+    background-color: transparent;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    text-color: #f7768e;
+}
