@@ -7,9 +7,13 @@
     "margin-bottom": 0,
     "height": 34,
     "spacing": 4,
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery"],
+    "custom/arch": {
+      "format": "\uF303",
+      "tooltip": false
+    },
     "hyprland/workspaces": {
         "format": "{name}",
         "on-click": "activate"
