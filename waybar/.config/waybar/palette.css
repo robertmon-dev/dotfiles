@@ -13,4 +13,4 @@
 @define-color primary #7aa2f7;
 @define-color highlight #bb9af7;
 @define-color text-main #c0caf5;
-@define-color border-col alpha(#565f89, 0.4);
+@define-color border-col alpha(#565f89, 0.3);
