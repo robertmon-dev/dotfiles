@@ -2,6 +2,11 @@
 
 My personal development environment. Built for productivity or call it whatever you want, featuring a Neovim setup on steroids, a snappy Fish shell, and a modular Hyprland configuration that actually makes sense.
 
+## Preview
+
+![Main Desktop Showcase](assets/preview.png)
+*Aesthetics*
+
 ## Key Features
 
 *   **Neovim:** Based on LazyVim but heavily customized. It packs custom Lua modules for AI bridging, specialized prompts, and `git-ai-commit` logic—because writing commit messages manually is so 2023.
