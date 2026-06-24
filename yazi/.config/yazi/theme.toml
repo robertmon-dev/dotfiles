@@ -1,0 +1,113 @@
+[manager]
+cwd = { fg = "#2ac3de", italic = true } # $tn-cyan
+hovered = { bg = "#414868" } # $bg-sidebar / $tn-storm
+preview_hovered = { bg = "#24283b" } # $bg-surface
+find_keyword = { fg = "#e0af68", italic = true } # $tn-yellow
+find_position = { fg = "#bb9af7", bg = "reset" } # $tn-purple
+marker_selected = { fg = "#9ece6a" } # $tn-green
+marker_copied = { fg = "#e0af68" } # $tn-yellow
+marker_cut = { fg = "#f7768e" } # $tn-red
+tab_active = { bg = "#7aa2f7", fg = "#15161e" } # $tn-blue / $text-on-accent
+tab_inactive = { bg = "#24283b", fg = "#a9b1d6" } # $bg-surface / $tn-grey-blue
+border_style = { fg = "#565f89" } # $tn-slate / $border-color
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#24283b", bg = "#24283b" }
+
+mode_normal = { bg = "#7aa2f7", fg = "#15161e", bold = true } # $primary
+mode_select = { bg = "#9ece6a", fg = "#15161e", bold = true } # $success
+mode_unset  = { bg = "#f7768e", fg = "#15161e", bold = true } # $danger
+
+progress_label  = { fg = "#ffffff", bold = true }
+progress_normal = { fg = "#7aa2f7", bg = "#24283b" }
+progress_error  = { fg = "#f7768e", bg = "#24283b" }
+
+permissions_t = { fg = "#7aa2f7" } # $tn-blue
+permissions_r = { fg = "#e0af68" } # $tn-yellow
+permissions_w = { fg = "#f7768e" } # $tn-red
+permissions_x = { fg = "#9ece6a" } # $tn-green
+permissions_s = { fg = "#565f89" } # $tn-slate
+
+[input]
+border   = { fg = "#7aa2f7" } # $tn-blue
+title    = { fg = "#2ac3de" } # $tn-cyan
+value    = { fg = "#c0caf5" } # $text-main
+selected = { bg = "#414868" } # $tn-storm
+
+[select]
+border   = { fg = "#7aa2f7" }
+active   = { fg = "#bb9af7", bold = true } # $tn-purple
+inactive = { fg = "#c0caf5" }
+
+[completion]
+border   = { fg = "#7aa2f7" }
+active   = { bg = "#414868", fg = "#c0caf5" }
+inactive = { fg = "#a9b1d6" } # $tn-grey-blue
+
+[tasks]
+border  = { fg = "#7aa2f7" }
+title   = { fg = "#2ac3de" }
+hovered = { bg = "#414868", fg = "#c0caf5" }
+
+[which]
+mask            = { bg = "#1a1b26" } # $bg-app
+cand            = { fg = "#73daca" } # $tn-teal
+rest            = { fg = "#565f89" } # $tn-slate
+desc            = { fg = "#bb9af7" } # $tn-purple
+separator       = "  "
+separator_style = { fg = "#565f89" }
+
+[help]
+on      = { fg = "#7aa2f7" }
+exec    = { fg = "#2ac3de" }
+desc    = { fg = "#c0caf5" }
+hovered = { bg = "#414868", bold = true }
+footer  = { fg = "#24283b", bg = "#c0caf5" }
+
+[filetype]
+rules = [
+    { mime = "image/*", fg = "#73daca" }, # $tn-teal
+    { mime = "video/*", fg = "#e0af68" }, # $tn-yellow
+    { mime = "audio/*", fg = "#e0af68" },
+    { mime = "application/zip", fg = "#f7768e" }, # $tn-red
+    { mime = "application/gzip", fg = "#f7768e" },
+    { mime = "application/x-tar", fg = "#f7768e" },
+    { mime = "application/x-bzip", fg = "#f7768e" },
+    { mime = "application/x-bzip2", fg = "#f7768e" },
+    { mime = "application/x-7z-compressed", fg = "#f7768e" },
+    { mime = "application/x-rar", fg = "#f7768e" },
+
+    { url = "*/", fg = "#7aa2f7" }, # $tn-blue
+    { mime = "x-exec", fg = "#9ece6a" }, # $tn-green
+    { url = "*", fg = "#c0caf5" }, # $text-main
+]
+
+[icon]
+prepend_rules = [
+    { name = "*.nix", text = "", fg = "#7aa2f7" }, # $tn-blue
+    { name = "*.lua", text = "󰢱", fg = "#7aa2f7" }, # $tn-blue
+    { name = "*.fish", text = "󰈺", fg = "#9ece6a" }, # $tn-green
+    { name = "*.sh", text = "", fg = "#9ece6a" }, # $tn-green
+    { name = "*.toml", text = "", fg = "#73daca" }, # $tn-teal
+    { name = "*.json", text = "", fg = "#e0af68" }, # $tn-yellow
+    { name = "*.yaml", text = "", fg = "#e0af68" }, # $tn-yellow
+    { name = "*.yml", text = "", fg = "#e0af68" }, # $tn-yellow
+
+    { name = "*.java", text = "", fg = "#f7768e" }, # $tn-red
+    { name = "*.rs", text = "󱘎", fg = "#ff9e64" }, # $tn-orange
+    { name = "*.js", text = "", fg = "#e0af68" }, # $tn-yellow
+    { name = "*.ts", text = "", fg = "#7aa2f7" }, # $tn-blue
+    { name = "*.py", text = "", fg = "#e0af68" }, # $tn-yellow
+    { name = "*.rb", text = "", fg = "#f7768e" }, # $tn-red
+    { name = "*.go", text = "", fg = "#2ac3de" }, # $tn-cyan
+    { name = "go.mod", text = "", fg = "#f7768e" }, # $tn-red
+    { name = "go.sum", text = "", fg = "#9ece6a" }, # $tn-green
+
+    { name = "*.md", text = "", fg = "#bb9af7" }, # $tn-purple
+    { name = "Dockerfile", text = "", fg = "#7aa2f7" }, # $tn-blue
+    { name = ".gitignore", text = "", fg = "#f7768e" }, # $tn-red
+    { name = ".env*", text = "", fg = "#ff9e64" }, # $tn-orange
+]
+
