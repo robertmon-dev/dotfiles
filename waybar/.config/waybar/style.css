@@ -1,28 +1,28 @@
 @import "palette.css";
 
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 18px;
-    border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 18px;
+  border-radius: 0;
 }
 
 window#waybar {
-    background: alpha(#1a1b26, 0.82);
-    color: @text-main;
-    box-shadow: @highlight 0px 30px 30px -20px;
-    border-radius: 20px 20px 20px 20px;
-    margin: 10px 10px;
+  background: alpha(#1a1b26, 0.82);
+  color: @text-main;
+  box-shadow: @highlight 0px 30px 30px -20px;
+  border-radius: 20px 20px 20px 20px;
+  margin: 10px 10px;
 
-    border: 4px solid @border-col;
-    padding: 6px 12px;
+  border: 4px solid @border-col;
+  padding: 6px 12px;
 }
 
 #custom-arch {
-    color: @primary;
-    font-size: 22px;
-    padding: 0 8px;
-    margin-left: 12px;
-    margin-right: 12px;
+  color: @primary;
+  font-size: 22px;
+  padding: 0 8px;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 #workspaces,
@@ -32,10 +32,10 @@ window#waybar {
 #network,
 #cpu,
 #memory {
-    padding: 8px 12px;
-    margin: 12px 12px 12px 12px;
-    border-radius: 12px;
-    font-weight: 700;
+  padding: 8px 12px;
+  margin: 12px 12px 12px 12px;
+  border-radius: 12px;
+  font-weight: 700;
 }
 #workspaces {
   padding: 0 20px;
@@ -44,32 +44,46 @@ window#waybar {
 }
 
 #clock {
-    color: @primary;
-    font-weight: 900;
-    padding: 0 16px;
-    letter-spacing: -0.01em;
+  color: @primary;
+  font-weight: 900;
+  padding: 0 16px;
+  letter-spacing: -0.01em;
 }
 
-#battery            { color: @tn-green; }
-#battery.charging   { color: @tn-green; }
+#battery {
+  color: @tn-green;
+}
+#battery.charging {
+  color: @tn-green;
+}
 
 #battery.warning:not(.charging) {
-    color: @tn-orange;
-    border-color: alpha(#ff9e64, 0.25);
-    background: alpha(#ff9e64, 0.07);
+  color: @tn-orange;
+  border-color: alpha(#ff9e64, 0.25);
+  background: alpha(#ff9e64, 0.07);
 }
 
 #battery.critical:not(.charging) {
-    color: @tn-red;
-    border-color: alpha(#f7768e, 0.45);
-    background: alpha(#f7768e, 0.12);
-    box-shadow: 0 0 14px alpha(#f7768e, 0.25), 0 4px 16px alpha(#000000, 0.3);
+  color: @tn-red;
+  border-color: alpha(#f7768e, 0.45);
+  background: alpha(#f7768e, 0.12);
+  box-shadow:
+    0 0 14px alpha(#f7768e, 0.25),
+    0 4px 16px alpha(#000000, 0.3);
 }
 
-#network    { color: @tn-blue; }
-#cpu        { color: @tn-yellow; }
-#memory     { color: @tn-teal; }
-#pulseaudio { color: @tn-purple; }
+#network {
+  color: @tn-blue;
+}
+#cpu {
+  color: @tn-yellow;
+}
+#memory {
+  color: @tn-teal;
+}
+#pulseaudio {
+  color: @tn-purple;
+}
 
 #workspaces button {
   font-weight: 900;
@@ -86,25 +100,25 @@ window#waybar {
 }
 
 #workspaces button.active {
-    color: @tn-blue;
-    font-weight: 900;
-    background-color: alpha(#414868, 0.55);
-    border-bottom: 4px solid @tn-blue;
-    box-shadow: 0 0 12px alpha(#7aa2f7, 0.2);
+  color: @tn-blue;
+  font-weight: 900;
+  background-color: alpha(#414868, 0.55);
+  border-bottom: 4px solid @tn-blue;
+  box-shadow: 0 0 12px alpha(#7aa2f7, 0.2);
 }
 #workspaces button:hover:not(.active) {
-    color: @tn-blue;
-    background-color: alpha(#414868, 0.3);
-    border-bottom: 4px solid alpha(#7aa2f7, 0.3);
+  color: @tn-blue;
+  background-color: alpha(#414868, 0.3);
+  border-bottom: 4px solid alpha(#7aa2f7, 0.3);
 }
 #workspaces button.urgent {
-    color: @tn-red;
-    border-bottom: 4px solid alpha(#f7768e, 0.6);
-    background-color: alpha(#f7768e, 0.07);
+  color: @tn-red;
+  border-bottom: 4px solid alpha(#f7768e, 0.6);
+  background-color: alpha(#f7768e, 0.07);
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inherit;
-    text-shadow: inherit;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inherit;
+  text-shadow: inherit;
 }

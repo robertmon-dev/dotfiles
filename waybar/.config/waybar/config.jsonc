@@ -1,4 +1,7 @@
-{
+[
+  {
+    "name": "left-bar",
+    "output": "HDMI-A-1",
     "layer": "top",
     "position": "top",
     "margin-top": 10,
@@ -6,45 +9,135 @@
     "margin-right": 15,
     "margin-bottom": 0,
     "height": 34,
-    "spacing": 4,
+    "spacing": 10,
+
     "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery"],
+    "modules-right": [],
+
     "custom/arch": {
-      "format": "\uF303",
-      "tooltip": false
+      "format": "󰣇",
+      "tooltip": false,
     },
     "hyprland/workspaces": {
-        "format": "{name}",
-        "on-click": "activate"
+      "show-special": true,
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "10",
+        "special:communication": "   ",
+        "communication": "  ",
+        "special:sysmon": " 󰍛 ",
+        "sysmon": " 󰍛 ",
+        "special:music": " 󰝚 ",
+        "music": " 󰝚 ",
+        "special:todo": "  ",
+        "todo": "  ",
+        "default": "  ",
+      },
+      "on-click": "activate",
     },
     "clock": {
-        "format": "{:%H:%M:%S}",
-        "interval": 1
+      "format": "{:%H:%M:%S}",
+      "interval": 1,
+    },
+  },
+  {
+    "name": "right-bar",
+    "output": "DP-1",
+    "layer": "top",
+    "position": "top",
+    "margin-top": 10,
+    "margin-left": 15,
+    "margin-right": 15,
+    "margin-bottom": 0,
+    "height": 34,
+    "spacing": 10,
+
+    "modules-left": ["custom/arch", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": [
+      "tray",
+      "pulseaudio",
+      "network",
+      "cpu",
+      "memory",
+      "battery",
+    ],
+
+    "custom/arch": {
+      "format": "󰣇",
+      "tooltip": false,
+    },
+    "hyprland/workspaces": {
+      "show-special": true,
+      "format": "{icon}",
+      "format-icons": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "10",
+        "special:communication": "  ",
+        "communication": "  ",
+        "special:sysmon": " 󰍛 ",
+        "sysmon": " 󰍛 ",
+        "special:music": " 󰝚 ",
+        "music": " 󰝚 ",
+        "special:todo": "  ",
+        "todo": "  ",
+        "default": "  ",
+      },
+      "on-click": "activate",
+    },
+    "tray": {
+      "icon-size": 16,
+      "spacing": 10,
+    },
+    "clock": {
+      "format": "{:%H:%M:%S}",
+      "interval": 1,
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟 Muted",
-        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
-        "on-click": "pavucontrol"
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟 Muted",
+      "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+      "on-click": "pavucontrol",
+      "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+      "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
     },
     "network": {
-        "format-wifi": "󰤨 {essid}",
-        "format-ethernet": "󰈀 {ifname}",
-        "format-disconnected": "󰤭 Off"
+      "format-wifi": "󰤨 {essid}",
+      "format-ethernet": "󰈀 {ifname}",
+      "format-disconnected": "󰤭 Off",
     },
     "cpu": {
-        "format": "󰻠 {usage}%",
-        "interval": 2
+      "format": "󰻠 {usage}%",
+      "interval": 2,
     },
     "memory": {
-        "format": "󰍛 {used:0.1f}G",
-        "interval": 2
+      "format": "󰍛 {used:0.1f}G",
+      "interval": 2,
     },
     "battery": {
-        "states": { "warning": 30, "critical": 15 },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    }
-}
+      "states": { "warning": 30, "critical": 15 },
+      "format": "{icon} {capacity}%",
+      "format-charging": "󰂄 {capacity}%",
+      "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    },
+  },
+]

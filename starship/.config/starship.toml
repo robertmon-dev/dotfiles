@@ -1,39 +1,32 @@
 add_newline = false
 # Pipes ╰─ ╭─
-# Powerline symbols                                    
+# Powerline symbols                                    
 # Wedges 🭧🭒 🭣🭧🭓
 # Random noise 🬖🬥🬔🬗
 # Cool stuff 󰜥   
 
-# format = """
-# $cmd_duration$username$hostname $directory $git_branch
-# $character
-# """
 # Don't print a new line at the start of the prompt
 format = """
-$cmd_duration 󰜥 $directory$git_branch
+$username$hostname  $cmd_duration 󰜥 $directory$git_branch$git_status
 $character"""
 
-# Replace the "❯" symbol in the prompt with "➜"
-# Replace the "❯" symbol in the prompt with "➜"
 [character]
-success_symbol = "[  ](bold fg:#7aa2f7)"
+success_symbol = "[  ](bold fg:#89ddff)"
 error_symbol = "[  ](bold fg:#f7768e)"
 vimcmd_symbol = "[  ❮](bold fg:#bb9af7)"
-vimcmd_visual_symbol = "[  ❮](bold fg:#e0af68)"
+vimcmd_visual_symbol = "[  ❮](bold fg:#b4f9f8)"
 vimcmd_replace_symbol = "[  ❮](bold fg:#f7768e)"
 vimcmd_replace_one_symbol = "[  ❮](bold fg:#f7768e)"
 
-# Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
 
 [git_branch]
-style = "bg:#7dcfff"
+style = "bg:#9abdf5"
 symbol = "󰘬"
 truncation_length = 12
-truncation_symbol = ""
-format = "󰜥 [](bold fg:#7dcfff)[$symbol $branch(:$remote_branch)](fg:#24283b bg:#7dcfff)[](bold fg:#7dcfff)"
+truncation_symbol = "…"
+format = " 󰜥 [](bold fg:#9abdf5)[$symbol $branch(:$remote_branch)](fg:#1a1b26 bg:#9abdf5)[](bold fg:#9abdf5)"
 
 [git_commit]
 commit_hash_length = 4
@@ -44,20 +37,22 @@ format = '[\($state( $progress_current of $progress_total)\)]($style) '
 cherry_pick = "[🍒 PICKING](bold #f7768e)"
 
 [git_status]
-conflicted = " 🏳 "
-ahead = " 🏎💨 "
-behind = " 😰 "
-diverged = " 😵 "
-untracked = " 🤷 ‍"
-stashed = " 📦 "
-modified = " 📝 "
-staged = '[++\($count\)](fg:#9ece6a)'
-renamed = " ✍️ "
-deleted = " 🗑 "
+style = "bg:#9abdf5 fg:#1a1b26"
+format = ' [](bold fg:#9abdf5)[$all_status$ahead_behind]($style)[](bold fg:#9abdf5)'
+conflicted = " "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+untracked = "󰋗 "
+stashed = "󰏗 "
+modified = "󰏫 "
+staged = '[++\($count\)](bold fg:#1a1b26 bg:#9abdf5) '
+renamed = "󰑕 "
+deleted = "󰆴 "
 
 [hostname]
 ssh_only = false
-format = "[•$hostname](bg:#7dcfff bold fg:#24283b)[](bold fg:#7dcfff)"
+format = "[•$hostname](bg:#9abdf5 bold fg:#1a1b26)[](bold fg:#9abdf5)"
 trim_at = ".companyname.com"
 disabled = false
 
@@ -68,7 +63,7 @@ disabled = false
 disabled = true
 threshold = -1
 symbol = " "
-style = "bold #9ece6a"
+style = "bold #b4f9f8"
 
 [time]
 disabled = true
@@ -76,20 +71,19 @@ format = '🕙[\[ $time \]]($style) '
 time_format = "%T"
 
 [username]
-style_user = "bold bg:#7dcfff fg:#24283b"
+style_user = "bold bg:#9abdf5 fg:#1a1b26"
 style_root = "#f7768e bold"
-format = "[](bold fg:#7dcfff)[$user]($style)"
+format = "[](bold fg:#9abdf5)[$user]($style)"
 disabled = false
 show_always = true
 
 [directory]
 home_symbol = "  "
 read_only = "  "
-style = "bg:#9ece6a fg:#24283b"
+style = "bg:#89ddff fg:#1a1b26"
 truncation_length = 6
 truncation_symbol = " ••/"
-format = '[](bold fg:#9ece6a)[󰉋 $path]($style)[](bold fg:#9ece6a)'
-
+format = '[](bold fg:#89ddff)[󰉋 $path]($style)[](bold fg:#89ddff)'
 
 [directory.substitutions]
 "Desktop" = "  "
@@ -102,4 +96,4 @@ format = '[](bold fg:#9ece6a)[󰉋 $path]($style)[](bold fg:#9ece6a)'
 
 [cmd_duration]
 min_time = 0
-format = '[](bold fg:#e0af68)[󰪢 $duration](bold bg:#e0af68 fg:#24283b)[](bold fg:#e0af68)'
+format = '[](bold fg:#b4f9f8)[󰪢 $duration](bold bg:#b4f9f8 fg:#1a1b26)[](bold fg:#b4f9f8)'
