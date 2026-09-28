@@ -4,132 +4,135 @@
     "type": "file",
     "source": "./ascii.txt",
     "height": 30,
-    "width": 15
+    "width": 15,
   },
   "modules": [
     "break",
     {
       "type": "custom",
-      "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+      "format": "\u001b[38;2;86;95;137m╭─ Hardware ──────────────────────────────────────────╮",
     },
     {
       "type": "host",
-      "key": " PC",
-      "keyColor": "green"
+      "key": "  󰌢 Host     ",
+      "keyColor": "#b4f9f8",
     },
     {
       "type": "cpu",
-      "key": "│ ├",
-      "keyColor": "green"
+      "key": "   CPU      ",
+      "keyColor": "#b4f9f8",
     },
     {
       "type": "gpu",
-      "key": "│ ├󰍛",
-      "keyColor": "green"
+      "key": "  󰍛 GPU      ",
+      "keyColor": "#b4f9f8",
     },
     {
       "type": "memory",
-      "key": "│ ├󰍛",
-      "keyColor": "green"
+      "key": "  󰑭 Memory   ",
+      "keyColor": "#b4f9f8",
     },
     {
       "type": "disk",
-      "key": "└ └",
-      "keyColor": "green"
+      "key": "  󰋊 Disk     ",
+      "keyColor": "#b4f9f8",
     },
     {
       "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+      "format": "\u001b[38;2;86;95;137m╰─────────────────────────────────────────────────────╯",
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+      "format": "\u001b[38;2;86;95;137m╭─ System ────────────────────────────────────────────╮",
     },
     {
       "type": "os",
-      "key": "OS",
-      "keyColor": "yellow"
+      "key": "  󰣇 OS       ",
+      "keyColor": "#89ddff",
     },
     {
       "type": "kernel",
-      "key": "│ ├",
-      "keyColor": "yellow"
+      "key": "   Kernel   ",
+      "keyColor": "#89ddff",
     },
     {
       "type": "bios",
-      "key": "│ ├",
-      "keyColor": "yellow"
+      "key": "  󰘚 BIOS     ",
+      "keyColor": "#89ddff",
     },
     {
       "type": "packages",
-      "key": "│ ├󰏖",
-      "keyColor": "yellow"
+      "key": "  󰏖 Packages ",
+      "keyColor": "#89ddff",
     },
     {
       "type": "shell",
-      "key": "└ └",
-      "keyColor": "yellow"
+      "key": "   Shell    ",
+      "keyColor": "#89ddff",
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;86;95;137m╰─────────────────────────────────────────────────────╯",
     },
     "break",
     {
-      "type": "de",
-      "key": " DE",
-      "keyColor": "blue"
+      "type": "custom",
+      "format": "\u001b[38;2;86;95;137m╭─ Desktop ───────────────────────────────────────────╮",
     },
     {
-      "type": "lm",
-      "key": "│ ├",
-      "keyColor": "blue"
+      "type": "de",
+      "key": "   DE       ",
+      "keyColor": "#9abdf5",
     },
     {
       "type": "wm",
-      "key": "│ ├",
-      "keyColor": "blue"
+      "key": "   WM       ",
+      "keyColor": "#9abdf5",
     },
     {
       "type": "wmtheme",
-      "key": "│ ├󰉼",
-      "keyColor": "blue"
+      "key": "  󰉼 Theme    ",
+      "keyColor": "#9abdf5",
     },
     {
       "type": "terminal",
-      "key": "└ └",
-      "keyColor": "blue"
+      "key": "   Terminal ",
+      "keyColor": "#9abdf5",
     },
     {
       "type": "custom",
-      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+      "format": "\u001b[38;2;86;95;137m╰─────────────────────────────────────────────────────╯",
     },
     "break",
     {
       "type": "custom",
-      "format": "\u001b[90m┌────────────────────Uptime / Age / DT────────────────────┐"
+      "format": "\u001b[38;2;86;95;137m╭─ Session ───────────────────────────────────────────╮",
     },
     {
       "type": "command",
-      "key": "  OS Age ",
-      "keyColor": "magenta",
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+      "key": "  󰔠 OS Age   ",
+      "keyColor": "#c0caf5",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days",
     },
     {
       "type": "uptime",
-      "key": "  Uptime ",
-      "keyColor": "magenta"
+      "key": "  󰅐 Uptime   ",
+      "keyColor": "#c0caf5",
     },
     {
       "type": "datetime",
-      "key": "  DateTime ",
-      "keyColor": "magenta"
+      "key": "  󰃭 DateTime ",
+      "keyColor": "#c0caf5",
     },
     {
       "type": "custom",
-      "format": "\u001b[90m└─────────────────────────────────────────────────────────┘"
+      "format": "\u001b[38;2;86;95;137m╰─────────────────────────────────────────────────────╯",
     },
     {
       "type": "colors",
       "paddingLeft": 2,
-      "symbol": "circle"
-    }
-  ]
+      "symbol": "circle",
+    },
+  ],
 }
