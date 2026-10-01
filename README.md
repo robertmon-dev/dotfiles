@@ -4,8 +4,11 @@ My personal development environment. Built for productivity or call it whatever 
 
 ## Preview
 
-![Main Desktop Showcase](assets/preview_1.jpg)
+![Mobile Showcase](assets/preview_1.jpg)
 *Aesthetics*
+
+![Main Desktop Showcase](assets/preview_2.png)
+Aesthetics too
 
 ## Key Features
 
