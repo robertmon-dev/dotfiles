@@ -33,7 +33,7 @@
         "8": "8",
         "9": "9",
         "10": "10",
-        "special:communication": "   ",
+        "special:communication": "  ",
         "communication": "  ",
         "special:sysmon": " 󰍛 ",
         "sysmon": " 󰍛 ",
@@ -46,8 +46,27 @@
       "on-click": "activate",
     },
     "clock": {
-      "format": "{:%H:%M:%S}",
       "interval": 1,
+      "format": "{:%a, %d %b ~ %H:%M:%S}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#ff7a93'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6e6e'><b><u>{}</u></b></span>",
+        },
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
+      },
     },
   },
   {
@@ -108,8 +127,27 @@
       "spacing": 10,
     },
     "clock": {
-      "format": "{:%H:%M:%S}",
       "interval": 1,
+      "format": "{:%a, %d %b ~ %H:%M:%S}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#ff7a93'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6e6e'><b><u>{}</u></b></span>",
+        },
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
+      },
     },
     "pulseaudio": {
       "format": "{icon} {volume}%",
