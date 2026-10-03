@@ -1,0 +1,2 @@
+set -q EZA_COLORS; or set -U EZA_COLORS "di=38;5;110:ln=38;5;116:ex=38;5;114:ur=38;5;109:uw=38;5;217:ux=38;5;114:gr=38;5;109:gw=38;5;217:gx=38;5;114"
+set -q EZA_ICON_SPACING; or set -U EZA_ICON_SPACING 2

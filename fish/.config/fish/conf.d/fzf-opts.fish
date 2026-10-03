@@ -1,0 +1,1 @@
+set -q FZF_DEFAULT_OPTS; or set -U FZF_DEFAULT_OPTS "--height 40% --layout=reverse --border --color=bg+:#24283b,bg:#1a1b26,fg:#c0caf5,fg+:#c0caf5,hl:#7aa2f7,hl+:#bb9af7,info:#565f89,prompt:#7aa2f7,pointer:#bb9af7,marker:#9ece6a,spinner:#7aa2f7,header:#565f89"
