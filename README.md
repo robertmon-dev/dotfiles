@@ -36,10 +36,14 @@ This repo is designed to be managed with `stow`. To link these configs to your s
 git clone https://github.com/robertmon-dev/dotfiles.git
 cd dotfiles
 
+./install.sh
+# or stow modules individually:
 stow nvim
 stow hypr
 # ...and so on for other modules
 ```
+
+`pkglist.txt` holds the explicitly installed packages (`pacman -Qqe`) used on the reference setup, in case you want to reproduce the environment with `pacman -S --needed - < pkglist.txt`.
 
 ## Configuration
 
@@ -56,8 +60,9 @@ The repo mirrors a standard `.config` layout:
 
 ```text
 .
+├── bat               # Pager theme & style
 ├── fastfetch         # System info layout
-├── fish              # Shell config & custom functions
+├── fish              # Shell config & custom functions (fzf, zoxide, eza wired in conf.d)
 ├── git               # Global .gitconfig and local overrides
 ├── hypr              # Hyprland, hyprlock, hyprpaper, and helper scripts
 ├── kitty             # GPU-accelerated terminal config
