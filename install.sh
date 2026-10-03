@@ -20,3 +20,8 @@ for dir in */; do
   echo "==> stow $module"
   stow -v "$module"
 done
+
+if command -v bat &>/dev/null; then
+  echo "==> bat cache --build"
+  bat cache --build
+fi
