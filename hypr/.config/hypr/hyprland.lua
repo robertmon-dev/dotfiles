@@ -1,12 +1,24 @@
-require("hyprcursor")
-require("hyprexpo")
+local utils = require("utils")
 
-require("monitors")
-require("animations")
-require("rules")
-require("keybinds")
-require("window")
-require("languages")
+local modules = {
+	"hyprcursor",
+	"hyprexpo",
+	"monitors",
+	"animations",
+	"rules",
+	"keybinds",
+	"window",
+	"languages",
+}
+
+local autostart_commands = {
+	"waybar",
+	"awww-daemon",
+	"awww img ~/Pictures/Wallpapers/theme.jpg",
+	"hyprpm reload -n",
+	"wl-paste --type text --watch cliphist store",
+	"wl-paste --type image --watch cliphist store",
+}
 
 hl.config({
 	xwayland = {
@@ -15,10 +27,7 @@ hl.config({
 })
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("waybar")
-	hl.exec_cmd("awww-daemon")
-	hl.exec_cmd("awww img ~/Pictures/Wallpapers/theme.jpg")
-	hl.exec_cmd("hyprpm reload -n")
-	hl.exec_cmd("wl-paste --type text --watch cliphist store")
-	hl.exec_cmd("wl-paste --type image --watch cliphist store")
+	utils.apply_each(autostart_commands, hl.exec_cmd)
 end)
+
+utils.apply_each(modules, require)
