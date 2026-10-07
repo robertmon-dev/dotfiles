@@ -15,4 +15,16 @@ function M.apply_binds(binds, default_opts, bind_fn)
 	end
 end
 
+function M.apply_each(list, fn)
+	for _, item in ipairs(list) do
+		fn(item)
+	end
+end
+
+function M.apply_unpack(list, fn)
+	for _, item in ipairs(list) do
+		fn(table.unpack(item))
+	end
+end
+
 return M
