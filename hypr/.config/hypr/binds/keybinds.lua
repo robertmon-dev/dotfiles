@@ -59,7 +59,7 @@ local binds = {
 
 	{
 		"SUPER + CTRL + left",
-		dsp.focus({ workspace = "e-1" }),
+		dsp.focus({ workspace = "r-1" }),
 		{ repeating = true, description = "Previous workspace" },
 	},
 	{ "SUPER + CTRL + right", dsp.focus({ workspace = "r+1" }), { repeating = true, description = "Next workspace" } },
