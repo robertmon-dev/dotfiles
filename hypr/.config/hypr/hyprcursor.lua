@@ -1,8 +1,11 @@
-hl.env("HYPRCURSOR_THEME", "Main")
-hl.env("HYPRCURSOR_SIZE", "24")
+local utils = require("utils")
 
-hl.env("XCURSOR_THEME", "Main")
-hl.env("XCURSOR_SIZE", "24")
+local env_vars = {
+	{ "HYPRCURSOR_THEME", "Main" },
+	{ "HYPRCURSOR_SIZE", "24" },
+	{ "XCURSOR_THEME", "Main" },
+	{ "XCURSOR_SIZE", "24" },
+}
 
 hl.config({
 	cursor = {
@@ -11,3 +14,5 @@ hl.config({
 		sync_gsettings_theme = true,
 	},
 })
+
+utils.apply_unpack(env_vars, hl.env)
