@@ -8,12 +8,33 @@ function State.new()
 
 	self.hostname = detect.hostname()
 	self.is_laptop = detect.has_battery()
+
+	self.connected_monitors = detect.connected_monitors()
+
 	self.has_nvidia = detect.has_nvidia()
 	self.has_intel = detect.has_intel()
 
 	self.profile = self.is_laptop and "laptop" or "desktop"
 
 	return self
+end
+
+function State:has_monitor(name)
+	for _, m in ipairs(self.connected_monitors) do
+		if m == name then
+			return true
+		end
+	end
+	return false
+end
+
+function State:has_external_monitor()
+	for _, m in ipairs(self.connected_monitors) do
+		if not m:match("^eDP") then
+			return true
+		end
+	end
+	return false
 end
 
 function State:cond(on_laptop, on_desktop)

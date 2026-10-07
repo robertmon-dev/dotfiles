@@ -80,4 +80,29 @@ function M.connected_monitors()
 	return monitors
 end
 
+function M.internal_display()
+	local handle = io.popen("find /sys/class/drm/ -maxdepth 1 -name 'card*-eDP-*' 2>/dev/null")
+	if not handle then
+		return nil
+	end
+
+	for path in handle:lines() do
+		local status_file = path .. "/status"
+		local f = io.open(status_file, "r")
+		if f then
+			local status = f:read("*l")
+			f:close()
+			if status and status:match("^connected$") then
+				local name = path:match("card%d+%-(eDP%-%d+)%s*$")
+				if name then
+					handle:close()
+					return name
+				end
+			end
+		end
+	end
+	handle:close()
+	return nil
+end
+
 return M
