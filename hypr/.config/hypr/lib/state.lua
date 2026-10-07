@@ -10,6 +10,7 @@ function State.new()
 	self.is_laptop = detect.has_battery()
 
 	self.connected_monitors = detect.connected_monitors()
+	self.internal_display = detect.internal_display and detect.internal_display() or nil
 
 	self.has_nvidia = detect.has_nvidia()
 	self.has_intel = detect.has_intel()
