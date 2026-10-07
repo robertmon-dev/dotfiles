@@ -13,7 +13,7 @@ Aesthetics too
 ## Key Features
 
 *   **Neovim:** Based on LazyVim but heavily customized. It packs custom Lua modules for AI bridging, specialized prompts, and `git-ai-commit` logic—because writing commit messages manually is so 2023.
-*   **Modular Hyprland:** Logic is split into dedicated files (animations, keybinds, rules). No massive, bloated config files here; utilized caelestia like keymapping.
+*   **Modular Hyprland:** Native Lua config, split by concern into `appearance/`, `binds/`, `hardware/`, `rules/`, and `lib/`. No massive, bloated config files here; utilized caelestia like keymapping.
 *   **Modern CLI Stack:** **Fish Shell** + **Starship**. It’s fast, looks great, and tells me exactly which git branch I'm on.
 *   **LSP on Steroids:** Optimized out-of-the-box support for my stuff.
 *   **Unified Aesthetics:** Consistent styling across the board—Waybar, Rofi, Kitty, and Hyprland all share a central color palette.
@@ -64,12 +64,27 @@ The repo mirrors a standard `.config` layout:
 ├── fastfetch         # System info layout
 ├── fish              # Shell config & custom functions (fzf, zoxide, eza wired in conf.d)
 ├── git               # Global .gitconfig and local overrides
-├── hypr              # Hyprland, hyprlock, hyprpaper, and helper scripts
+├── hypr              # Hyprland (modular Lua config), hyprlock, hyprpaper, and helper scripts
 ├── kitty             # GPU-accelerated terminal config
 ├── nvim              # The heart (LazyVim + AI + LSP modules)
 ├── rofi              # App launcher & theme
 ├── starship          # Cross-shell prompt config
 └── waybar            # Status bar CSS and JSON modules
+```
+
+`hypr/.config/hypr` itself is organized by concern rather than dumped into one folder:
+
+```text
+hypr/.config/hypr
+├── hyprland.lua      # Entry point: wires up modules & autostart
+├── hyprlock.conf      # Lock screen (own config, read by hyprlock)
+├── hyprpaper.conf     # Wallpaper daemon (own config, read by hyprpaper)
+├── lib/               # Shared helpers & constants (utils, variables)
+├── appearance/        # Colors, animations, cursor, window look & feel
+├── hardware/          # Monitors, keyboard layout
+├── rules/             # Window / workspace / layer rules
+├── binds/             # Keybindings
+└── scripts/           # Helper scripts (e.g. keybinds cheat-sheet)
 ```
 
 ## Highlights within Neovim
@@ -82,7 +97,7 @@ The repo mirrors a standard `.config` layout:
 
 ## Support & Scripts
 
-*   **Keybinds:** Hyprland shortcuts are located in `hypr/.config/hypr/conf/keybinds.conf`. To quickly list active system shortcuts, just hit `SUPER + H`.
+*   **Keybinds:** Hyprland shortcuts are located in `hypr/.config/hypr/binds/keybinds.lua`. To quickly list active system shortcuts, just hit `SUPER + H`.
 *   **LSP Logs:** If Neovim is acting up, check the standard LSP logs at `~/.local/state/nvim/lsp.log`.
 
 ---
