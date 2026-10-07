@@ -37,17 +37,17 @@ local binds = {
 	},
 
 	{
-		"SUPER SHIFT + M",
+		"SUPER + SHIFT + M",
 		dsp.window.move({ workspace = "special:" .. vars.ws_discord, follow = false }),
 		{ description = "Send window to Discord scratchpad" },
 	},
 	{
-		"SUPER SHIFT + B",
+		"SUPER + SHIFT + B",
 		dsp.window.move({ workspace = "special:" .. vars.ws_sysmon, follow = false }),
 		{ description = "Send window to system monitor scratchpad" },
 	},
 	{
-		"SUPER SHIFT + Return",
+		"SUPER + SHIFT + Return",
 		dsp.window.move({ workspace = "e+0", follow = true }),
 		{ description = "Move window to next empty workspace" },
 	},
@@ -55,14 +55,14 @@ local binds = {
 	{ "SUPER + Page_Up", dsp.focus({ workspace = "e-1" }), { repeating = true, description = "Previous workspace" } },
 	{ "SUPER + Page_Down", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
 	{
-		"SUPER CTRL + left",
+		"SUPER + CTRL + left",
 		dsp.focus({ workspace = "e-1" }),
 		{ repeating = true, description = "Previous workspace" },
 	},
-	{ "SUPER CTRL + right", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
-	{ "SUPER CTRL + up", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
+	{ "SUPER + CTRL + right", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
+	{ "SUPER + CTRL + up", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
 	{
-		"SUPER CTRL + down",
+		"SUPER + CTRL + down",
 		dsp.focus({ workspace = "e-1" }),
 		{ repeating = true, description = "Previous workspace" },
 	},
@@ -99,21 +99,21 @@ local binds = {
 		{ locked = true, description = "Screenshot fullscreen" },
 	},
 	{
-		"SUPER SHIFT + S",
+		"SUPER + SHIFT + S",
 		dsp.exec_cmd([[grim -g "$(slurp)" - | swappy -f -]]),
 		{ description = "Screenshot selection" },
 	},
 	{ "SUPER + O", dsp.exec_cmd("grimblast copy area"), { description = "Screenshot without edition" } },
 
 	{
-		"SUPER ALT + R",
+		"SUPER + ALT + R",
 		dsp.exec_cmd(
 			[[pkill -SIGINT wf-recorder || wf-recorder -g "$(slurp)" -f ~/Videos/Record_$(date +'%Y-%m-%d_%H-%M-%S').mp4]]
 		),
 		{ description = "Record screen (selection)" },
 	},
 	{
-		"SUPER SHIFT + R",
+		"SUPER + SHIFT + R",
 		dsp.exec_cmd([[pkill -SIGINT wf-recorder || wf-recorder -f ~/Videos/Record_$(date +'%Y-%m-%d_%H-%M-%S').mp4]]),
 		{ description = "Record full screen" },
 	},
@@ -145,7 +145,7 @@ for i = 1, 10 do
 		{ "SUPER + " .. key, dsp.focus({ workspace = tostring(i) }), { description = "Switch to workspace " .. i } }
 	)
 	table.insert(binds, {
-		"SUPER ALT + " .. key,
+		"SUPER + ALT + " .. key,
 		dsp.window.move({ workspace = tostring(i), follow = true }),
 		{ description = "Move window to workspace " .. i },
 	})

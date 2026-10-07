@@ -2,7 +2,6 @@ local utils = require("utils")
 
 local modules = {
 	"hyprcursor",
-	"hyprexpo",
 	"monitors",
 	"animations",
 	"rules",
