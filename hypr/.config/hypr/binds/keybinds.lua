@@ -48,25 +48,21 @@ local binds = {
 	},
 	{
 		"SUPER + SHIFT + Return",
-		dsp.window.move({ workspace = "e+0", follow = true }),
-		{ description = "Move window to next empty workspace" },
+		dsp.window.move({ workspace = "emptynm", follow = true }),
+		{ description = "Move window to a new empty workspace" },
+	},
+	{
+		"SUPER + Return",
+		dsp.focus({ workspace = "emptynm" }),
+		{ description = "Switch to a new empty workspace" },
 	},
 
-	{ "SUPER + Page_Up", dsp.focus({ workspace = "e-1" }), { repeating = true, description = "Previous workspace" } },
-	{ "SUPER + Page_Down", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
 	{
 		"SUPER + CTRL + left",
 		dsp.focus({ workspace = "e-1" }),
 		{ repeating = true, description = "Previous workspace" },
 	},
-	{ "SUPER + CTRL + right", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
-	{ "SUPER + CTRL + up", dsp.focus({ workspace = "e+1" }), { repeating = true, description = "Next workspace" } },
-	{
-		"SUPER + CTRL + down",
-		dsp.focus({ workspace = "e-1" }),
-		{ repeating = true, description = "Previous workspace" },
-	},
-
+	{ "SUPER + CTRL + right", dsp.focus({ workspace = "r+1" }), { repeating = true, description = "Next workspace" } },
 	{
 		"XF86AudioMute",
 		dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
