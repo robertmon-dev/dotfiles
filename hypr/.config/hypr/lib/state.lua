@@ -37,6 +37,24 @@ function State:has_external_monitor()
 	return false
 end
 
+function State:has_internal_monitor()
+	for _, m in ipairs(self.connected_monitors) do
+		if m:match("^eDP") then
+			return true
+		end
+	end
+	return false
+end
+
+function State:get_primary_external()
+	for _, m in ipairs(self.connected_monitors) do
+		if not m:match("^eDP") then
+			return m
+		end
+	end
+	return nil
+end
+
 function State:cond(on_laptop, on_desktop)
 	if self.is_laptop then
 		return on_laptop
