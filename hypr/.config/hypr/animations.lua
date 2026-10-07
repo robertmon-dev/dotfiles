@@ -1,17 +1,13 @@
 local utils = require("utils")
 
-hl.config({
-	animations = { enabled = true },
-})
-
-utils.apply_unpack({
+local curves = {
 	{ "specialWorkSwitch", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } } },
 	{ "emphasizedAccel", { type = "bezier", points = { { 0.3, 0 }, { 0.8, 0.15 } } } },
 	{ "emphasizedDecel", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } } },
 	{ "standard", { type = "bezier", points = { { 0.2, 0 }, { 0, 1 } } } },
-}, hl.curve)
+}
 
-utils.apply_each({
+local animations = {
 	{ leaf = "layersIn", enabled = true, speed = 5, bezier = "emphasizedDecel", style = "slide" },
 	{ leaf = "layersOut", enabled = true, speed = 4, bezier = "emphasizedAccel", style = "slide" },
 	{ leaf = "fadeLayers", enabled = true, speed = 5, bezier = "standard" },
@@ -27,4 +23,11 @@ utils.apply_each({
 	{ leaf = "fade", enabled = true, speed = 6, bezier = "standard" },
 	{ leaf = "fadeDim", enabled = true, speed = 6, bezier = "standard" },
 	{ leaf = "border", enabled = true, speed = 6, bezier = "standard" },
-}, hl.animation)
+}
+
+hl.config({
+	animations = { enabled = true },
+})
+
+utils.apply_unpack(curves, hl.curve)
+utils.apply_each(animations, hl.animation)
