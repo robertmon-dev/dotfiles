@@ -105,4 +105,34 @@ function M.internal_display()
 	return nil
 end
 
+function M.monitor_resolution(output_name)
+	if not output_name then
+		return nil
+	end
+
+	local handle = io.popen("find /sys/class/drm/ -maxdepth 1 -name '*" .. output_name .. "' 2>/dev/null")
+	if not handle then
+		return nil
+	end
+
+	local path = handle:read("*l")
+	handle:close()
+
+	if not path then
+		return nil
+	end
+
+	local modes_file = path .. "/modes"
+	local f = io.open(modes_file, "r")
+	if f then
+		local mode = f:read("*l")
+		f:close()
+		if mode and mode:match("^%d+x%d+") then
+			return mode
+		end
+	end
+
+	return nil
+end
+
 return M
