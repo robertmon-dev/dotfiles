@@ -55,4 +55,29 @@ function M.has_touchpad()
 	return content and #content > 0
 end
 
+function M.connected_monitors()
+	local monitors = {}
+	local handle = io.popen("find /sys/class/drm/ -maxdepth 1 -name 'card*-*' 2>/dev/null")
+	if not handle then
+		return monitors
+	end
+
+	for path in handle:lines() do
+		local status_file = path .. "/status"
+		local f = io.open(status_file, "r")
+		if f then
+			local status = f:read("*l")
+			f:close()
+			if status and status:match("^connected$") then
+				local name = path:match("card%d+%-(.+)%s*$")
+				if name then
+					table.insert(monitors, name)
+				end
+			end
+		end
+	end
+	handle:close()
+	return monitors
+end
+
 return M
