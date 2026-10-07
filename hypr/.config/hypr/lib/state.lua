@@ -7,11 +7,9 @@ function State.new()
 	local self = setmetatable({}, State)
 
 	self.hostname = detect.hostname()
-	self.user = os.getenv("USER") or "user"
-
 	self.is_laptop = detect.has_battery()
 	self.has_nvidia = detect.has_nvidia()
-	self.has_touchpad = detect.has_touchpad()
+	self.has_intel = detect.has_intel()
 
 	self.profile = self.is_laptop and "laptop" or "desktop"
 
