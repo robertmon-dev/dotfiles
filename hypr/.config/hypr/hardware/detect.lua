@@ -135,4 +135,39 @@ function M.monitor_resolution(output_name)
 	return nil
 end
 
+function M.connected_monitors_with_modes()
+	local monitors = {}
+	local handle = io.popen("find /sys/class/drm/ -maxdepth 1 -name 'card*-*' 2>/dev/null")
+	if not handle then
+		return monitors
+	end
+
+	for path in handle:lines() do
+		local status_file = path .. "/status"
+		local f = io.open(status_file, "r")
+		if f then
+			local status = f:read("*l")
+			f:close()
+			if status and status:match("^connected$") then
+				local name = path:match("card%d+%-(.+)%s*$")
+				if name then
+					local modes_file = path .. "/modes"
+					local mf = io.open(modes_file, "r")
+					local mode = mf and mf:read("*l") or "preferred"
+					if mf then
+						mf:close()
+					end
+
+					table.insert(monitors, {
+						name = name,
+						resolution = (mode and mode:match("^%d+x%d+")) or "preferred",
+					})
+				end
+			end
+		end
+	end
+	handle:close()
+	return monitors
+end
+
 return M
