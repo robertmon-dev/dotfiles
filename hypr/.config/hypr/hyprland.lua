@@ -9,6 +9,8 @@ local modules = {
 	"keybinds",
 	"window",
 	"languages",
+	"variables",
+	"colors",
 }
 
 local autostart_commands = {
