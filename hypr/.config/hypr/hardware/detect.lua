@@ -34,6 +34,17 @@ function M.has_nvidia()
 	return exists("/proc/driver/nvidia") or exists("/sys/module/nvidia")
 end
 
+function M.has_intel()
+	return exists("/sys/module/i915") or exists("/sys/module/xe")
+end
+
+function M.intel_driver_name()
+	if exists("/usr/lib/dri/iHD_drv_video.so") then
+		return "iHD"
+	end
+	return "i965"
+end
+
 function M.has_touchpad()
 	local f = io.popen("grep -i -E 'touchpad|synaptics' /proc/bus/input/devices 2>/dev/null", "r")
 	if not f then
