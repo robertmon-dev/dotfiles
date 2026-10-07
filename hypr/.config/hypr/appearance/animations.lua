@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("lib.utils")
 
 local curves = {
 	{ "specialWorkSwitch", { type = "bezier", points = { { 0.05, 0.7 }, { 0.1, 1 } } } },

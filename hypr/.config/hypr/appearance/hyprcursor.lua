@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("lib.utils")
 
 local env_vars = {
 	{ "HYPRCURSOR_THEME", "Main" },

@@ -1,5 +1,5 @@
-local vars = require("variables")
-local utils = require("utils")
+local vars = require("lib.variables")
+local utils = require("lib.utils")
 local dsp = hl.dsp
 
 local default_opts = {}

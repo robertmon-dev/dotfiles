@@ -1,4 +1,4 @@
-local colors = require("colors")
+local colors = require("appearance.colors")
 
 hl.config({
 	general = {

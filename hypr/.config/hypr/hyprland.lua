@@ -1,15 +1,15 @@
-local utils = require("utils")
+local utils = require("lib.utils")
 
 local modules = {
-	"hyprcursor",
-	"monitors",
-	"animations",
-	"rules",
-	"keybinds",
-	"window",
-	"languages",
-	"variables",
-	"colors",
+	"appearance.hyprcursor",
+	"hardware.monitors",
+	"appearance.animations",
+	"rules.rules",
+	"binds.keybinds",
+	"appearance.window",
+	"hardware.languages",
+	"lib.variables",
+	"appearance.colors",
 }
 
 local autostart_commands = {
