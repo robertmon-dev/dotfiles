@@ -170,4 +170,21 @@ function M.connected_monitors_with_modes()
 	return monitors
 end
 
+function M.hyprctl_monitor_order()
+	local names = {}
+	local handle = io.popen("hyprctl monitors 2>/dev/null")
+	if not handle then
+		return names
+	end
+
+	for line in handle:lines() do
+		local name = line:match("^Monitor (%S+) %(ID %d+%)")
+		if name then
+			table.insert(names, name)
+		end
+	end
+	handle:close()
+	return names
+end
+
 return M
