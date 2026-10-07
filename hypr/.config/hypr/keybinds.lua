@@ -19,8 +19,8 @@ hl.bind("SUPER + right", dsp.focus({ direction = "right" }), { description = "Fo
 hl.bind("SUPER + up", dsp.focus({ direction = "up" }), { description = "Focus up" })
 hl.bind("SUPER + down", dsp.focus({ direction = "down" }), { description = "Focus down" })
 
-hl.bind("SUPER + mouse:272", dsp.window.drag(), { mouse = true, description = "Move window" })
-hl.bind("SUPER + mouse:273", dsp.window.resize(), { mouse = true, description = "Resize window" })
+hl.bind("SUPER + mouse:272", dsp.window.drag(), { drag = true, description = "Move window" })
+hl.bind("SUPER + mouse:273", dsp.window.resize(), { drag = true, description = "Resize window" })
 
 for i = 1, 10 do
 	local key = i % 10
