@@ -56,6 +56,18 @@ function State:get_primary_external()
 	return nil
 end
 
+function State:get_resolution(output_name)
+	local res = detect.monitor_resolution(output_name)
+	return res or "preferred"
+end
+
+function State:get_internal_resolution()
+	if not self.internal_display then
+		return "preferred"
+	end
+	return self:get_resolution(self.internal_display)
+end
+
 function State:cond(on_laptop, on_desktop)
 	if self.is_laptop then
 		return on_laptop
