@@ -31,6 +31,9 @@ function State:get_env()
 		envs["GBM_BACKEND"] = "nvidia-drm"
 		envs["__GLX_VENDOR_LIBRARY_NAME"] = "nvidia"
 		envs["NVD_BACKEND"] = "direct"
+	elseif self.has_intel then
+		envs["LIBVA_DRIVER_NAME"] = detect.intel_driver_name()
+		envs["VDPAU_DRIVER"] = "va_gl"
 	end
 
 	return envs
