@@ -1,7 +1,7 @@
 local vars = require("variables")
 local utils = require("utils")
 
-utils.apply_each({
+local window_rules = {
 	{
 		match = { fullscreen = false },
 		opacity = vars.window_opacity .. " override",
@@ -119,14 +119,14 @@ utils.apply_each({
 		fullscreen = true,
 		stay_focused = true,
 	},
-}, hl.window_rule)
+}
 
-utils.apply_each({
+local workspace_rules = {
 	{ workspace = "w[tv1]", gaps_out = vars.single_window_gaps_out },
 	{ workspace = "f[1]", gaps_out = vars.single_window_gaps_out },
-}, hl.workspace_rule)
+}
 
-utils.apply_each({
+local layer_rules = {
 	{
 		match = { namespace = "fuzzel" },
 		blur = true,
@@ -136,4 +136,8 @@ utils.apply_each({
 		match = { namespace = "waybar" },
 		blur = false,
 	},
-}, hl.layer_rule)
+}
+
+utils.apply_each(window_rules, hl.window_rule)
+utils.apply_each(workspace_rules, hl.workspace_rule)
+utils.apply_each(layer_rules, hl.layer_rule)
