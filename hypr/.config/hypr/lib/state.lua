@@ -1,4 +1,4 @@
-local detect = require("lib.detect")
+local detect = require("hardware.detect")
 
 local State = {}
 State.__index = State
