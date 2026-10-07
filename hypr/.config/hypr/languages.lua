@@ -1,0 +1,6 @@
+hl.config({
+	input = {
+		kb_layout = "pl,us",
+		kb_options = "grp:alt_shift_toggle",
+	},
+})
