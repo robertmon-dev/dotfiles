@@ -77,6 +77,7 @@ function M.connected_monitors()
 		end
 	end
 	handle:close()
+	table.sort(monitors)
 	return monitors
 end
 
@@ -110,7 +111,7 @@ function M.monitor_resolution(output_name)
 		return nil
 	end
 
-	local handle = io.popen("find /sys/class/drm/ -maxdepth 1 -name '*" .. output_name .. "' 2>/dev/null")
+	local handle = io.popen("find /sys/class/drm/ -maxdepth 1 -name 'card*-" .. output_name .. "' 2>/dev/null")
 	if not handle then
 		return nil
 	end
