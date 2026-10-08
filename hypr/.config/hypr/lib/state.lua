@@ -71,6 +71,17 @@ function State:cond(on_laptop, on_desktop)
 	return on_desktop
 end
 
+function State:get_aq_drm_devices()
+	if #self.gpus < 2 then
+		return nil
+	end
+	local devs = {}
+	for _, g in ipairs(self.gpus) do
+		table.insert(devs, "/dev/dri/" .. g.card)
+	end
+	return table.concat(devs, ":")
+end
+
 function State:get_env()
 	local envs = {}
 
