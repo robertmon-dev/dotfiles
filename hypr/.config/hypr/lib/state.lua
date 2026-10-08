@@ -14,6 +14,7 @@ function State:refresh()
 
 	self.has_nvidia = detect.has_nvidia()
 	self.has_intel = detect.has_intel()
+	self.has_amd = detect.has_amd()
 
 	self.profile = self.is_laptop and "laptop" or "desktop"
 
@@ -79,6 +80,9 @@ function State:get_env()
 		envs["GBM_BACKEND"] = "nvidia-drm"
 		envs["__GLX_VENDOR_LIBRARY_NAME"] = "nvidia"
 		envs["NVD_BACKEND"] = "direct"
+	elseif self.has_amd then
+		envs["LIBVA_DRIVER_NAME"] = "radeonsi"
+		envs["VDPAU_DRIVER"] = "radeonsi"
 	end
 
 	return envs

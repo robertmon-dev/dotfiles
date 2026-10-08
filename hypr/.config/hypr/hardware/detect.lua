@@ -165,6 +165,10 @@ function M.has_intel()
 	return exists("/sys/module/i915") or exists("/sys/module/xe")
 end
 
+function M.has_amd()
+	return exists("/sys/module/amdgpu")
+end
+
 function M.intel_driver_name()
 	return any_exists(INTEL_IHD_PATHS) and "iHD" or "i965"
 end
