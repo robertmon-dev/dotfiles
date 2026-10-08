@@ -203,10 +203,6 @@ function M.has_amd()
 	return exists("/sys/module/amdgpu")
 end
 
-function M.intel_driver_name()
-	return any_exists(INTEL_IHD_PATHS) and "iHD" or "i965"
-end
-
 function M.drm_cards()
 	local internal_cards = {}
 	for _, o in ipairs(outputs()) do
@@ -227,17 +223,11 @@ function M.drm_cards()
 			table.insert(cards, {
 				card = card,
 				num = tonumber(card:match("%d+")),
+				vendor = vendor,
+				device = read_first_line(path .. "/device/device"),
 				rank = internal_cards[card] and 0 or GPU_RANK[vendor],
 			})
 		end
-
-		table.insert(cards, {
-			card = card,
-			num = tonumber(card:match("%d+")),
-			vendor = vendor,
-			device = read_first_line(path .. "/device/device"),
-			rank = internal_cards[card] and 0 or GPU_RANK[vendor],
-		})
 	end
 	h:close()
 
