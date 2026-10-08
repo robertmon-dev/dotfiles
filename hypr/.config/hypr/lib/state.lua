@@ -49,6 +49,10 @@ function State:get_primary_external()
 	return nil
 end
 
+function State:get_primary_monitor()
+	return self:get_primary_external() or self.internal_display or self.connected_monitors[1]
+end
+
 function State:has_external_monitor()
 	return self:get_primary_external() ~= nil
 end
@@ -89,6 +93,12 @@ function State:find_gpu(vendor)
 		end
 	end
 	return nil
+end
+
+function State:ui_scale(output, base_height)
+	base_height = base_height or 1080
+	local h = tonumber(self:get_resolution(output):match("x(%d+)"))
+	return h and h / base_height or 1
 end
 
 function State:get_env()
