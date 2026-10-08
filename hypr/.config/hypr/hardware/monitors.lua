@@ -9,6 +9,8 @@ local REFRESH = {
 	["DP-1"] = 144,
 }
 
+M.VENDOR = { INTEL = "0x8086", AMD = "0x1002", NVIDIA = "0x10de" }
+
 local function rank(output)
 	if output.internal then
 		return 0
