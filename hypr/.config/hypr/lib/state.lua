@@ -98,14 +98,14 @@ function State:get_env()
 		local intel = self:find_gpu(detect.VENDOR.INTEL)
 		envs["LIBVA_DRIVER_NAME"] = detect.intel_driver_name(intel and intel.device)
 		envs["VDPAU_DRIVER"] = "va_gl"
+	elseif self.has_amd then
+		envs["LIBVA_DRIVER_NAME"] = "radeonsi"
+		envs["VDPAU_DRIVER"] = "radeonsi"
 	elseif self.has_nvidia then
 		envs["LIBVA_DRIVER_NAME"] = "nvidia"
 		envs["GBM_BACKEND"] = "nvidia-drm"
 		envs["__GLX_VENDOR_LIBRARY_NAME"] = "nvidia"
 		envs["NVD_BACKEND"] = "direct"
-	elseif self.has_amd then
-		envs["LIBVA_DRIVER_NAME"] = "radeonsi"
-		envs["VDPAU_DRIVER"] = "radeonsi"
 	end
 
 	local aq = self:get_aq_drm_devices()
