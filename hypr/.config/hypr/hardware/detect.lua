@@ -29,6 +29,24 @@ local INTEL_LEGACY_HI = {
 
 M.VENDOR = { INTEL = "0x8086", AMD = "0x1002", NVIDIA = "0x10de" }
 
+local function exists(path)
+	local f = io.open(path, "r")
+	if f then
+		f:close()
+		return true
+	end
+	return false
+end
+
+local function any_exists(paths)
+	for _, path in ipairs(paths) do
+		if exists(path) then
+			return true
+		end
+	end
+	return false
+end
+
 local function intel_is_legacy(id)
 	if INTEL_LEGACY_HI[math.floor(id / 256)] then
 		return true
@@ -54,24 +72,6 @@ function M.intel_driver_name(device_id)
 end
 
 local GPU_RANK = { ["0x8086"] = 1, ["0x1002"] = 2, ["0x10de"] = 3 }
-
-local function exists(path)
-	local f = io.open(path, "r")
-	if f then
-		f:close()
-		return true
-	end
-	return false
-end
-
-local function any_exists(paths)
-	for _, path in ipairs(paths) do
-		if exists(path) then
-			return true
-		end
-	end
-	return false
-end
 
 local function read_first_line(path)
 	local f = io.open(path, "r")
