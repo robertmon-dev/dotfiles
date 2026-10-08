@@ -98,6 +98,11 @@ function State:get_env()
 		envs["VDPAU_DRIVER"] = "radeonsi"
 	end
 
+	local aq = self:get_aq_drm_devices()
+	if aq then
+		envs["AQ_DRM_DEVICES"] = aq
+	end
+
 	return envs
 end
 
