@@ -12,6 +12,8 @@ function State:refresh()
 	self.connected_monitors = detect.connected_monitors()
 	self.internal_display = detect.internal_display()
 
+	self.gpus = detect.drm_cards()
+
 	self.has_nvidia = detect.has_nvidia()
 	self.has_intel = detect.has_intel()
 	self.has_amd = detect.has_amd()

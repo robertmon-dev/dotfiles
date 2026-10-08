@@ -19,6 +19,8 @@ local INTEL_IHD_PATHS = {
 	"/usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so",
 }
 
+local GPU_RANK = { ["0x8086"] = 1, ["0x1002"] = 2, ["0x10de"] = 3 }
+
 local function exists(path)
 	local f = io.open(path, "r")
 	if f then
@@ -171,6 +173,41 @@ end
 
 function M.intel_driver_name()
 	return any_exists(INTEL_IHD_PATHS) and "iHD" or "i965"
+end
+
+function M.drm_cards()
+	local internal_cards = {}
+	for _, o in ipairs(outputs()) do
+		if o.internal then
+			internal_cards[o.card] = true
+		end
+	end
+
+	local cards = {}
+	local h = io.popen("ls -d " .. DRM .. "card* 2>/dev/null")
+	if not h then
+		return cards
+	end
+	for path in h:lines() do
+		local card = path:match("(card%d+)$")
+		local vendor = card and read_first_line(path .. "/device/vendor")
+		if vendor and GPU_RANK[vendor] then
+			table.insert(cards, {
+				card = card,
+				num = tonumber(card:match("%d+")),
+				rank = internal_cards[card] and 0 or GPU_RANK[vendor],
+			})
+		end
+	end
+	h:close()
+
+	table.sort(cards, function(a, b)
+		if a.rank ~= b.rank then
+			return a.rank < b.rank
+		end
+		return a.num < b.num
+	end)
+	return cards
 end
 
 return M
