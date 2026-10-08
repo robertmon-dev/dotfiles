@@ -1,31 +1,71 @@
-local state = require("lib.state")
+local detect = require("hardware.detect")
 local utils = require("lib.utils")
 
-local layout, refresh
+local M = {}
 
-if state.is_laptop then
-	local internal = state:get_internal_display() or "eDP-1"
-	layout = { internal, state:get_primary_external() }
-	refresh = ""
-else
-	layout = { "HDMI-A-1", "DP-1" }
-	refresh = "@144"
+local ORDER = { "HDMI-A-1", "DP-1" }
+local REFRESH = {
+	["HDMI-A-1"] = 144,
+	["DP-1"] = 144,
+}
+
+local function rank(output)
+	if output.internal then
+		return 0
+	end
+	for i, name in ipairs(ORDER) do
+		if name == output.name then
+			return i
+		end
+	end
+	return #ORDER + 1
 end
 
-local monitor_rules = {}
-local x = 0
+local function sorted_outputs()
+	local outputs = {}
+	for _, o in ipairs(detect.connected_monitors_with_modes()) do
+		table.insert(outputs, o)
+	end
+	table.sort(outputs, function(a, b)
+		local ra, rb = rank(a), rank(b)
+		if ra ~= rb then
+			return ra < rb
+		end
+		return a.name < b.name
+	end)
+	return outputs
+end
 
-for _, output in ipairs(layout) do
-	local res = state:get_resolution(output)
-	if res then
-		table.insert(monitor_rules, {
-			output = output,
-			mode = res .. refresh,
-			position = x .. "x0",
+function M.rules()
+	local rules = {}
+	local x = 0
+
+	for _, o in ipairs(sorted_outputs()) do
+		local width = o.resolution and tonumber(o.resolution:match("^(%d+)x"))
+		local hz = REFRESH[o.name]
+
+		local mode = "preferred"
+		if o.resolution then
+			mode = hz and (o.resolution .. "@" .. hz) or o.resolution
+		end
+
+		table.insert(rules, {
+			output = o.name,
+			mode = mode,
+			position = x and (x .. "x0") or "auto",
 			scale = 1,
 		})
-		x = x + tonumber(res:match("^(%d+)x"))
+
+		x = (x and width) and (x + width) or nil
 	end
+
+	return rules
 end
 
-utils.apply_each(monitor_rules, hl.monitor)
+function M.apply()
+	utils.apply_each(M.rules(), hl.monitor)
+end
+
+M.apply()
+
+return M
