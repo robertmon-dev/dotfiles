@@ -3,14 +3,14 @@ local detect = require("hardware.detect")
 local State = {}
 State.__index = State
 
-function State.new()
-	local self = setmetatable({}, State)
+function State:refresh()
+	detect.refresh()
 
 	self.hostname = detect.hostname()
 	self.is_laptop = detect.is_laptop()
 
 	self.connected_monitors = detect.connected_monitors()
-	self.internal_display = detect.internal_display and detect.internal_display() or nil
+	self.internal_display = detect.internal_display()
 
 	self.has_nvidia = detect.has_nvidia()
 	self.has_intel = detect.has_intel()
@@ -18,6 +18,10 @@ function State.new()
 	self.profile = self.is_laptop and "laptop" or "desktop"
 
 	return self
+end
+
+function State.new()
+	return setmetatable({}, State):refresh()
 end
 
 function State:has_monitor(name)
@@ -29,22 +33,8 @@ function State:has_monitor(name)
 	return false
 end
 
-function State:has_external_monitor()
-	for _, m in ipairs(self.connected_monitors) do
-		if not m:match("^eDP") then
-			return true
-		end
-	end
-	return false
-end
-
 function State:has_internal_monitor()
-	for _, m in ipairs(self.connected_monitors) do
-		if m:match("^eDP") then
-			return true
-		end
-	end
-	return false
+	return self.internal_display ~= nil
 end
 
 function State:get_primary_external()
@@ -56,9 +46,12 @@ function State:get_primary_external()
 	return nil
 end
 
+function State:has_external_monitor()
+	return self:get_primary_external() ~= nil
+end
+
 function State:get_resolution(output_name)
-	local res = detect.monitor_resolution(output_name)
-	return res or "preferred"
+	return detect.monitor_resolution(output_name) or "preferred"
 end
 
 function State:get_internal_resolution()
@@ -78,14 +71,14 @@ end
 function State:get_env()
 	local envs = {}
 
-	if self.has_nvidia then
+	if self.has_intel then
+		envs["LIBVA_DRIVER_NAME"] = detect.intel_driver_name()
+		envs["VDPAU_DRIVER"] = "va_gl"
+	elseif self.has_nvidia then
 		envs["LIBVA_DRIVER_NAME"] = "nvidia"
 		envs["GBM_BACKEND"] = "nvidia-drm"
 		envs["__GLX_VENDOR_LIBRARY_NAME"] = "nvidia"
 		envs["NVD_BACKEND"] = "direct"
-	elseif self.has_intel then
-		envs["LIBVA_DRIVER_NAME"] = detect.intel_driver_name()
-		envs["VDPAU_DRIVER"] = "va_gl"
 	end
 
 	return envs
