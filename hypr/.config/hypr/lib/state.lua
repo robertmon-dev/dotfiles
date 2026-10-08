@@ -7,7 +7,7 @@ function State.new()
 	local self = setmetatable({}, State)
 
 	self.hostname = detect.hostname()
-	self.is_laptop = detect.has_battery()
+	self.is_laptop = detect.is_laptop()
 
 	self.connected_monitors = detect.connected_monitors()
 	self.internal_display = detect.internal_display and detect.internal_display() or nil
