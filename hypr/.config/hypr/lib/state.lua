@@ -82,6 +82,15 @@ function State:get_aq_drm_devices()
 	return table.concat(devs, ":")
 end
 
+function State:find_gpu(vendor)
+	for _, g in ipairs(self.gpus) do
+		if g.vendor == vendor then
+			return g
+		end
+	end
+	return nil
+end
+
 function State:get_env()
 	local envs = {}
 
