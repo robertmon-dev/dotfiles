@@ -27,6 +27,8 @@ local INTEL_LEGACY_HI = {
 	[0x0D] = true, -- Haswell GT3e
 }
 
+M.VENDOR = { INTEL = "0x8086", AMD = "0x1002", NVIDIA = "0x10de" }
+
 local function intel_is_legacy(id)
 	if INTEL_LEGACY_HI[math.floor(id / 256)] then
 		return true
