@@ -95,7 +95,8 @@ function State:get_env()
 	local envs = {}
 
 	if self.has_intel then
-		envs["LIBVA_DRIVER_NAME"] = detect.intel_driver_name()
+		local intel = self:find_gpu("0x8086")
+		envs["LIBVA_DRIVER_NAME"] = detect.intel_driver_name(intel and intel.device)
 		envs["VDPAU_DRIVER"] = "va_gl"
 	elseif self.has_nvidia then
 		envs["LIBVA_DRIVER_NAME"] = "nvidia"
