@@ -19,6 +19,38 @@ local INTEL_IHD_PATHS = {
 	"/usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so",
 }
 
+local INTEL_LEGACY_HI = {
+	[0x01] = true, -- Sandy Bridge, Ivy Bridge
+	[0x04] = true, -- Haswell
+	[0x0A] = true, -- Haswell ULT
+	[0x0C] = true, -- Haswell SDV
+	[0x0D] = true, -- Haswell GT3e
+}
+
+local function intel_is_legacy(id)
+	if INTEL_LEGACY_HI[math.floor(id / 256)] then
+		return true
+	end
+	if math.floor(id / 16) == 0x0F3 then
+		return true
+	end -- Bay Trail
+	if id >= 0x2000 and id < 0x3000 then
+		return true
+	end -- GMA/G45 along with  Braswell (0x22Bx)
+	return id == 0x0042
+		or id == 0x0046 -- Ironlake
+		or id == 0xA001
+		or id == 0xA011 -- Pineview
+end
+
+function M.intel_driver_name(device_id)
+	local id = tonumber(device_id or "")
+	if id and intel_is_legacy(id) then
+		return "i965"
+	end
+	return any_exists(INTEL_IHD_PATHS) and "iHD" or "i965"
+end
+
 local GPU_RANK = { ["0x8086"] = 1, ["0x1002"] = 2, ["0x10de"] = 3 }
 
 local function exists(path)
@@ -198,6 +230,14 @@ function M.drm_cards()
 				rank = internal_cards[card] and 0 or GPU_RANK[vendor],
 			})
 		end
+
+		table.insert(cards, {
+			card = card,
+			num = tonumber(card:match("%d+")),
+			vendor = vendor,
+			device = read_first_line(path .. "/device/device"),
+			rank = internal_cards[card] and 0 or GPU_RANK[vendor],
+		})
 	end
 	h:close()
 
