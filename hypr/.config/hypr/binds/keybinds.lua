@@ -23,8 +23,8 @@ local binds = {
 	{ "SUPER + up", dsp.focus({ direction = "up" }), { description = "Focus up" } },
 	{ "SUPER + down", dsp.focus({ direction = "down" }), { description = "Focus down" } },
 
-	{ "SUPER + mouse:272", dsp.window.drag(), { drag = true, description = "Move window" } },
-	{ "SUPER + mouse:273", dsp.window.resize(), { drag = true, description = "Resize window" } },
+	{ "SUPER + mouse:272", dsp.window.drag(), { mouse = true, description = "Move window" } },
+	{ "SUPER + mouse:273", dsp.window.resize(), { mouse = true, description = "Resize window" } },
 
 	{ "SUPER + mouse_down", dsp.focus({ workspace = "e-1" }), { description = "Previous workspace (scroll)" } },
 	{ "SUPER + mouse_up", dsp.focus({ workspace = "e+1" }), { description = "Next workspace (scroll)" } },
